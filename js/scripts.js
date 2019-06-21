@@ -1,31 +1,44 @@
+function Order(){
+  this.pizzas = []
+}
+
+var order = new Order();
+
+Order.prototype.addPizza = function(pizza){
+  this.pizzas.push(pizza);
+}
+
 function Pizza(){
   this.size = 0,
   this.toppings = [],
   this.price = 6;
 }
 
-var userPizza = new Pizza();
-
 Pizza.prototype.calculatePrice = function(){
   this.price = this.price + this.size + (this.toppings.length * 2);
+}
+
+function resetPizzaForm(){
+  $.each($("input[type='checkbox']:checked"), function(){
+    $(this).prop('checked', false);
+  });
+  $("#selectSize").get(0).selectedIndex = 0;
 }
 
 $(function(){
   $("#pizzaForm").submit(function(event) {
     event.preventDefault();
 
-    var userSize = parseInt($("#selectSize").val());
+    var userPizza = new Pizza();
 
-    var userToppings = [];
+    userPizza.size = parseInt($("#selectSize").val());
     $.each($("input[name='topping']:checked"), function(){
-      userToppings.push($(this).val());
+      userPizza.toppings.push($(this).val());
     });
 
-    userPizza.size = userSize;
-    userPizza.toppings = userToppings;
-
     userPizza.calculatePrice();
+    order.addPizza(userPizza);
+    resetPizzaForm();
 
   });
-
 });
