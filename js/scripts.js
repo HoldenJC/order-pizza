@@ -1,3 +1,4 @@
+//business logic for Order
 function Order() {
   this.pizzas = [],
     this.total = 0
@@ -9,12 +10,6 @@ Order.prototype.addPizza = function(pizza) {
   this.pizzas.push(pizza);
 }
 
-function Pizza() {
-  this.size = 0,
-    this.toppings = [],
-    this.price = 6
-}
-
 Pizza.prototype.calculatePrice = function() {
   this.price = this.price + this.size + (this.toppings.length * 2);
 }
@@ -23,6 +18,14 @@ Pizza.prototype.calculateTotal = function() {
   order.total += this.price;
 }
 
+//business logic for Pizza
+function Pizza() {
+  this.size = 0,
+    this.toppings = [],
+    this.price = 6
+}
+
+//front end and UI logic below----------
 function resetPizzaForm() {
   $.each($("input[type='checkbox']:checked"), function() {
     $(this).prop('checked', false);
@@ -64,7 +67,7 @@ function completeOrder() {
 }
 
 function pickupOrder() {
-  $("#pickupChosen").html("Thank you for your order!<br><span class=\"font-weight-bold\">Your order number is: " + Math.floor(Math.random() * 101) + "</span><br>Please reference this order number when you arrive at the store. Our address is:<br><br>123 Pizza Lane<br>Pizzatown Creek, Pizzalvania, 12345<br>United Plates of Pizza");
+  $("#pickupChosen").html("Thank you for your order!<br><strong>Your order number is: " + Math.floor(Math.random() * 101) + "</strong><br>Please reference this order number when you arrive at the store. Our address is:<br><br><strong>123 Pizza Lane<br>Pizzatown Creek, Pizzalvania, 12345<br>United Plates of Pizza</strong>");
 
   $("#pickupDelivery").fadeOut(800);
   $("#pickupChosen").delay(800).fadeIn(800);
@@ -76,7 +79,7 @@ function deliveryOrder() {
   $("#addressForm").click(function() {
     $("#deliveryForm").slideUp(800);
 
-    $("#deliveryDetails").html("Thank you for your order!<br><span class=\"font-weight-bold\">Your order number is: " + Math.floor(Math.random() * 101) + "</span><br>Your order will be delivered to the following address:<br><br><span class=\"font-weight-bold\">" + $("#userName").val() + "<br>" + $("#userAddress").val() + " " + $("#userAddress2").val() + "<br>" + $("#userCity").val() + ", " + $("#userState").val() + ", " + $("#userZip").val() + "</span>");
+    $("#deliveryDetails").html("Thank you for your order!<br><strong>Your order number is: " + Math.floor(Math.random() * 101) + "</strong><br>Your order will be delivered to the following address:<br><br><strong>" + $("#userName").val() + "<br>" + $("#userAddress").val() + " " + $("#userAddress2").val() + "<br>" + $("#userCity").val() + ", " + $("#userState").val() + ", " + $("#userZip").val() + "</strong>");
 
     $("#deliveryDetails").delay(800).slideDown(800);
   });
@@ -97,6 +100,7 @@ function buttonListeners() {
 $(function() {
   buttonListeners();
   $("#pizzaForm").submit(function(event) {
+    $("#alertField").empty();
     event.preventDefault();
 
     if (!isNaN(parseInt($("#selectSize").val()))) {
@@ -116,8 +120,8 @@ $(function() {
       $("#totalCost").delay(1600).slideDown(800);
       $("#completeOrderButton").delay(2400).slideDown(800);
     } else {
-      $("#alertField").append("<div id=\"userAlert\" class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>");
-      $("#userAlert").append("Please select a pizza size!");
+      $("#alertField").append("<div id=\"userAlert\" class=\"alert shadow-lg alert-danger alert-dismissible fade show\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button></div>");
+      $("#userAlert").append("<strong>Please select a pizza size!</strong>");
     }
   });
 });
