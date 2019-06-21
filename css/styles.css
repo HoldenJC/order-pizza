@@ -1,16 +1,20 @@
-#currentOrderLabel, #totalCost, #currentOrder {
+#currentOrderLabel, #totalCost, #currentOrder, #completeOrderButton, #pickupDelivery, #pickupChosen, #deliveryChosen, #deliveryDetails {
   display: none;
+}
+
+#pickupChosen, #deliveryChosen {
+  text-align: center;
 }
 
 #totalCost {
   font-weight: 600;
 }
 
-#selectSize, #addPizzaButton {
+#selectSize, #addPizzaButton, #completeOrderButton {
   margin-bottom: 10px;
 }
 
-#totalCost, #addPizzaButton {
+#totalCost, #addPizzaButton, #completeOrderButton {
   margin-top: 10px;
 }
 
@@ -46,4 +50,12 @@ body {
   min-height: 100%;
   background-position: center;
   overflow: hidden;
+}
+
+#userAlert {
+  margin-top: 15px;
+  width: 60%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
