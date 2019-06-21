@@ -1,3 +1,42 @@
 #currentOrderLabel {
   display: none;
 }
+
+#totalCost {
+  font-weight: 600;
+}
+
+#selectSize {
+  margin-bottom: 10px;
+}
+
+#addPizzaButton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.jumbotron {
+  margin-top: 20px;
+  text-align: center;
+  background: rgba(233, 236, 239, 0.9);
+}
+
+.card {
+  background: rgba(248, 249, 250, 0.9) !important;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+h1 img {
+  height: 100px;
+}
+
+body {
+  background-image: url("../img/main-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 100%;
+  background-position: center;
+  overflow: hidden;
+}

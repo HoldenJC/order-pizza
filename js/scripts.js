@@ -39,11 +39,14 @@ function sizeDisplay(pizza){
 
 function orderUpdate(){
   $("#currentOrder").empty();
+  var total = 0;
   $.each($(order.pizzas), function(){
     var size = sizeDisplay(this);
     var tops = this.toppings.join(", ");
+    total += this.price;
     $("#currentOrder").append(size + " pizza with " + tops + ": $" + this.price.toFixed(2) + "<br>");
   })
+  $("#totalCost").html("Total: $" + total.toFixed(2));
 }
 
 $(function(){

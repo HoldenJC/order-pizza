@@ -12,8 +12,13 @@
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="container">
+    <div class="jumbotron shadow">
+      <h1 class="display-1"><img src="img/header-icon.png"> Holden's Pizzas</h1>
 
+    </div>
+
+    <div class="card bg-light p-3">
     <form id="pizzaForm">
     <select class="form-control" id="selectSize">
       <option selected disabled hidden>Choose Pizza Size</option>
@@ -59,17 +64,15 @@
         Sausage
       </label>
     </div>
-
-    <button type="submit" name="button">Add Pizza to Order</button>
+    <button id="addPizzaButton" class="btn btn-success" type="submit" name="button">Add Pizza to Order</button>
   </form>
 
   <label id="currentOrderLabel" for="currentOrder">Current Order:</label>
-  <div id="currentOrder">
-
-
-  </div>
+  <div id="currentOrder"></div>
+  <div id="totalCost"></div>
 
   </div>
+</div>
 </body>
 
 </html>
