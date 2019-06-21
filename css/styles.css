@@ -1,4 +1,4 @@
-#currentOrderLabel {
+#currentOrderLabel, #totalCost, #currentOrder {
   display: none;
 }
 
@@ -6,13 +6,12 @@
   font-weight: 600;
 }
 
-#selectSize {
+#selectSize, #addPizzaButton {
   margin-bottom: 10px;
 }
 
-#addPizzaButton {
+#totalCost, #addPizzaButton {
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .jumbotron {
