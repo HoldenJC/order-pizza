@@ -25,6 +25,26 @@ function resetPizzaForm(){
   $("#selectSize").get(0).selectedIndex = 0;
 }
 
+function sizeDisplay(pizza){
+  if(pizza.size === 0){
+    return "Small";
+  } else if (pizza.size === 2){
+    return "Medium";
+  } else if (pizza.size === 4){
+    return "Large";
+  } else {
+    return "Extra Large";
+  }
+}
+
+function orderUpdate(){
+  $("#currentOrder").empty();
+  $.each($(order.pizzas), function(){
+    var size = sizeDisplay(this);
+    $("#currentOrder").append(size + " " + this.toppings + " " + this.price + "<br>");
+  })
+}
+
 $(function(){
   $("#pizzaForm").submit(function(event) {
     event.preventDefault();
@@ -39,6 +59,7 @@ $(function(){
     userPizza.calculatePrice();
     order.addPizza(userPizza);
     resetPizzaForm();
+    orderUpdate();
 
   });
 });
