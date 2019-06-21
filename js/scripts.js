@@ -41,7 +41,8 @@ function orderUpdate(){
   $("#currentOrder").empty();
   $.each($(order.pizzas), function(){
     var size = sizeDisplay(this);
-    $("#currentOrder").append(size + " " + this.toppings + " " + this.price + "<br>");
+    var tops = this.toppings.join(", ");
+    $("#currentOrder").append(size + " pizza with " + tops + ": $" + this.price.toFixed(2) + "<br>");
   })
 }
 
@@ -60,6 +61,7 @@ $(function(){
     order.addPizza(userPizza);
     resetPizzaForm();
     orderUpdate();
+    $("#currentOrderLabel").show();
 
   });
 });
