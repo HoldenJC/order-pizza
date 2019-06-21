@@ -14,6 +14,14 @@
   margin-top: 10px;
 }
 
+.form-control:hover {
+  box-shadow: 3px 3px 5px grey;
+}
+
+.form-check-label:hover, .form-check-input:hover {
+  text-shadow: 1px 1px 1px grey;
+}
+
 .jumbotron {
   margin-top: 20px;
   text-align: center;
